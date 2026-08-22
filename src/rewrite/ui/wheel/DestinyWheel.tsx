@@ -20,6 +20,18 @@ const SLICE_COLORS = [
   '#76658a',
 ] as const
 
+const DENSE_WHEEL_THRESHOLD = 12
+
+/** Keep quality-coded ring colors recognizable while still giving them enough contrast on canvas. */
+const SEMANTIC_COLORS: Record<string, string> = {
+  '#f7fbff': '#e9eff5',
+  '#f3d66d': '#c69a3c',
+  '#a98bd9': '#8f78bd',
+  '#273044': '#46536d',
+  '#d85d6f': '#c45c70',
+  '#fff8d9': '#dfc477',
+}
+
 function DiceIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22">
@@ -36,6 +48,10 @@ function DiceIcon() {
 function truncateLabel(name: string, optionCount: number): string {
   const chars = Array.from(name.trim())
   if (chars.length === 0) return ''
+  // Once the wheel becomes denser than twelve slices, labels cease to be
+  // information and turn into overlapping glyphs. The option drawer below
+  // remains the canonical readable label surface for these wheels.
+  if (optionCount > DENSE_WHEEL_THRESHOLD) return ''
   if (optionCount <= 6) return chars.slice(0, 8).join('')
   if (optionCount <= 10) return chars.slice(0, 5).join('')
   if (optionCount <= 16) return chars.slice(0, 3).join('')
@@ -44,6 +60,8 @@ function truncateLabel(name: string, optionCount: number): string {
 }
 
 function sliceColor(index: number, fallback: string): string {
+  const semantic = SEMANTIC_COLORS[fallback.toLowerCase()]
+  if (semantic) return semantic
   // Prefer curated palette; fall back only if option color is already strong.
   const curated = SLICE_COLORS[index % SLICE_COLORS.length]
   if (!fallback || fallback.startsWith('#e') || fallback.startsWith('#f') || fallback.startsWith('#d7') || fallback.startsWith('#cfc')) {
@@ -94,6 +112,7 @@ export function DestinyWheel({
   const fingerprint = useMemo(() => optionFingerprint(options), [options])
   const interactive = status === 'ready'
   const count = options.length
+  const dense = count > DENSE_WHEEL_THRESHOLD
 
   useEffect(() => {
     onRestRef.current = onRotationEnd
@@ -121,17 +140,16 @@ export function DestinyWheel({
       }
     })
 
-    const dense = count > 14
     const wheel = new Wheel(el, {
       items,
       borderWidth: 0,
       borderColor: 'transparent',
-      lineWidth: dense ? 0 : 1,
-      lineColor: 'rgba(255,255,255,.55)',
+      lineWidth: count > 22 ? 0.95 : 1.35,
+      lineColor: 'rgba(255,255,255,.48)',
       itemLabelFont: 'Microsoft YaHei, PingFang SC, Noto Sans SC, sans-serif',
-      itemLabelFontSizeMax: dense ? 11 : count > 8 ? 13 : 16,
-      itemLabelRadius: dense ? 0.72 : 0.78,
-      itemLabelRadiusMax: dense ? 0.18 : 0.24,
+      itemLabelFontSizeMax: count > 8 ? 13 : 16,
+      itemLabelRadius: count > 8 ? 0.76 : 0.78,
+      itemLabelRadiusMax: count > 8 ? 0.2 : 0.24,
       itemLabelAlign: 'right',
       itemLabelRotation: 0,
       itemLabelColors: items.map((item) => item.labelColor),
@@ -204,7 +222,7 @@ export function DestinyWheel({
   return (
     <>
       <div
-        className={`destiny-wheel${status === 'animating' ? ' destiny-wheel--animating' : ''}`}
+        className={`destiny-wheel${status === 'animating' ? ' destiny-wheel--animating' : ''}${dense ? ' destiny-wheel--dense' : ''}`}
         data-testid="destiny-wheel"
         aria-busy={status === 'animating'}
       >
@@ -228,6 +246,12 @@ export function DestinyWheel({
           </button>
         </div>
       </div>
+
+      {dense ? (
+        <p className="wheel-density-note" data-testid="wheel-density-note">
+          分段较密，轮盘保留概率色带；展开下方选项查看完整名称与详情。
+        </p>
+      ) : null}
 
       <div className="wheel-option-panel">
         <button

@@ -19,6 +19,10 @@
 
 ![命运结果 · 移动端](docs/images/05-wheel-result.png)
 
+![高密度命运转盘 · 40 段](docs/images/07-wheel-dense-optimized.png)
+
+![高密度命运转盘 · 移动端](docs/images/08-wheel-dense-mobile-optimized.png)
+
 ## 已实现
 
 - 角色创建：姓名、性别与可重放的种子随机数。

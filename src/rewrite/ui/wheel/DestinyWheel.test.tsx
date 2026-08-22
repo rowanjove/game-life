@@ -9,6 +9,15 @@ const options: WheelOption[] = [
   { id: 'b', name: '极北之地', description: '冰雪磨砺出坚韧灵魂。', weight: 40, color: '#E07A9A', value: 'b' },
 ]
 
+const denseOptions: WheelOption[] = Array.from({ length: 17 }, (_, index) => ({
+  id: `dense-${index}`,
+  name: `黑色 ${index + 1}0000–${index + 1}9999年`,
+  description: '高密度测试选项',
+  weight: 1,
+  color: '#273044',
+  value: index,
+}))
+
 it('renders clean wheel chrome and opens details from option list', async () => {
   const user = userEvent.setup()
   const onSpin = vi.fn()
@@ -39,4 +48,11 @@ it('disables spinning while animating', () => {
   )
 
   expect(screen.getByRole('button', { name: '正在旋转' })).toBeDisabled()
+})
+
+it('switches dense wheels to an explicit readable-details hint', () => {
+  render(<DestinyWheel options={denseOptions} status="ready" onSpin={vi.fn()} />)
+
+  expect(screen.getByTestId('destiny-wheel')).toHaveClass('destiny-wheel--dense')
+  expect(screen.getByTestId('wheel-density-note')).toHaveTextContent('展开下方选项')
 })

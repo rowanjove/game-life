@@ -46,6 +46,14 @@
   border-radius: 50%;
 }
 
+/* Dense probability tables are intentionally label-free. This keeps the
+   wheel legible instead of shrinking Chinese glyphs into visual noise. */
+.destiny-wheel--dense .destiny-wheel__canvas-host {
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,.72),
+    inset 0 0 34px rgba(26, 43, 66, .12);
+}
+
 /* Top pointer */
 .destiny-wheel__pointer {
   position: absolute;
@@ -142,6 +150,16 @@
 .wheel-option-panel {
   width: min(100%, 420px);
   margin: 8px auto 0;
+  text-align: center;
+}
+
+.wheel-density-note {
+  max-width: 32em;
+  margin: 2px auto 6px;
+  padding: 0 18px;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.5;
   text-align: center;
 }
 
