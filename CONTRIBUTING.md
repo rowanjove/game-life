@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for helping improve **game-life**.
+Thanks for helping improve **轮盘人生（Wheel of Life）**.
 
 ## Development
 

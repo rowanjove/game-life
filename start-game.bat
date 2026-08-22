@@ -2,11 +2,11 @@
 setlocal EnableExtensions
 cd /d "%~dp0"
 
-title game-life
+title 轮盘人生 · Wheel of Life
 
 echo.
 echo  ========================================
-echo    game-life / 轮盘人生
+echo    轮盘人生 / Wheel of Life
 echo  ========================================
 echo.
 
@@ -50,7 +50,7 @@ echo ----------------------------------------
 
 if /i not "%GAME_LIFE_NO_BROWSER%"=="1" (
   if exist "%~dp0scripts\open-when-ready.ps1" (
-    start "game-life-browser" /min powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\open-when-ready.ps1" -Url "%URL%"
+    start "wheel-of-life-browser" /min powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\open-when-ready.ps1" -Url "%URL%"
   )
 )
 

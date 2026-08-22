@@ -1,13 +1,13 @@
-# game-life · 轮盘人生
+# 轮盘人生 · Wheel of Life
 
-[![CI](https://github.com/rowanjove/game-life/actions/workflows/ci.yml/badge.svg)](https://github.com/rowanjove/game-life/actions/workflows/ci.yml)
+[![CI](https://github.com/rowanjove/wheel-of-life/actions/workflows/ci.yml/badge.svg)](https://github.com/rowanjove/wheel-of-life/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 一个中文为主的随机人生 / 命运转盘游戏。你将在石碑上刻下姓名，逐步揭开容貌、时代、出生地、种族、命器与人生事件，走向属于自己的结局。
 
-**在线试玩：** [GitHub Pages](https://rowanjove.github.io/game-life/)
+**在线试玩：** [GitHub Pages](https://rowanjove.github.io/wheel-of-life/)
 
-> 当前公开版本聚焦 Web 端。微信小程序与抖音小程序工作区保留在 `miniapp/`，本次发布冻结，不作为 v0.3.0 的交付目标。
+> 当前公开版本为 v0.3.2，聚焦 Web 端。微信小程序与抖音小程序工作区保留在 `miniapp/`，本次发布冻结，不作为 Web 版更名的交付目标。
 
 ## 截图
 

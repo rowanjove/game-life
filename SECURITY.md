@@ -6,7 +6,7 @@ Only the latest `main` branch is supported for security fixes.
 
 ## What this project is
 
-`game-life` is a **client-side only** browser game. There is no official backend.
+`轮盘人生（Wheel of Life）` is a **client-side only** browser game. There is no official backend.
 Secrets embedded in the frontend (including optional pack HMAC keys) **must not**
 be treated as security boundaries.
 

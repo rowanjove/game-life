@@ -1,8 +1,8 @@
 {
-  "name": "game-life",
+  "name": "wheel-of-life",
   "private": true,
-  "version": "0.3.0",
-  "description": "Browser life-sim / destiny wheel game with pluggable content packs",
+  "version": "0.3.2",
+  "description": "轮盘人生：可扩展内容包的中文随机人生与命运转盘游戏",
   "type": "module",
   "license": "MIT",
   "scripts": {
