@@ -1,0 +1,24 @@
+game-life
+=========
+
+This repository contains original game engine code, UI, and a default
+fantasy content pack ("灵元人生" / base pack).
+
+Third-party / fan content packs
+-------------------------------
+
+Optional content packs (for example themed after commercial novels, games,
+or other protected IP) are NOT part of the MIT-licensed default product.
+
+- Do not commit or publish copyrighted text, names, or assets in this repo.
+- Pack authors are solely responsible for rights clearance.
+- The engine's integrity checks (SHA-256 / optional HMAC) only detect file
+  corruption; they do not grant copyright permission or prove authenticity
+  of untrusted third-party packs.
+
+Third-party software
+--------------------
+
+- spin-wheel (MIT) — https://github.com/CrazyTim/spin-wheel
+- JSZip (MIT or GPLv3 dual) — https://github.com/Stuk/jszip
+- React, Vite, Zustand, Vitest — see package.json licenses

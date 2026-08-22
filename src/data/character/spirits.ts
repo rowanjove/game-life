@@ -1,0 +1,127 @@
+import type {
+  ContentSpirit as Spirit,
+  ContentSpiritCategory as SpiritCategory,
+  ContentSpiritQuality as SpiritQuality,
+  ContentWheelOption as WheelOption,
+} from '../../rewrite/content/types'
+
+type SpiritSeed = readonly [id: string, name: string, quality: SpiritQuality, weight: number]
+
+function createSpirits(category: SpiritCategory, seeds: readonly SpiritSeed[]): WheelOption<Spirit>[] {
+  const color = category === 'tool' ? '#d4af37' : category === 'animal' ? '#ef4444' : '#22c55e'
+  return seeds.map(([id, name, quality, weight]) => ({
+    id,
+    name,
+    weight,
+    color,
+    description: `${quality}品质·${category === 'tool' ? '器' : category === 'animal' ? '兽' : '自然'}命器`,
+    value: { id, name, category, quality },
+  }))
+}
+
+export const toolSpirits = createSpirits('tool', [
+  ['tool-blue-silver-hammer', '银丝草锤（强化型）', '废', 1],
+  ['tool-rusty-sword', '烂铁剑', '废', 2],
+  ['tool-wooden-stick', '木棍', '废', 3],
+  ['tool-broken-copper-hammer', '破铜锤', '废', 3],
+  ['tool-stone-axe', '石斧', '废', 2],
+  ['tool-iron-sword', '普通铁剑', '普通', 6],
+  ['tool-iron-hammer', '铁锤', '普通', 6],
+  ['tool-copper-ring', '铜环', '普通', 5],
+  ['tool-wooden-shield', '木盾', '普通', 5],
+  ['tool-silver-spear', '银长枪', '良好', 6],
+  ['tool-metal-bow', '金属弓', '良好', 5],
+  ['tool-iron-fan', '铁扇', '良好', 5],
+  ['tool-golden-blades', '黄金双刀', '良好', 4],
+  ['tool-jade-flute', '玉笛', '良好', 4],
+  ['tool-crystal-ball', '水晶球', '良好', 3],
+  ['tool-steel-fork', '钢叉', '良好', 3],
+  ['tool-dragon-tooth-staff', '龙牙棍', '优秀', 3],
+  ['tool-thunder-hammer', '雷霆锤', '优秀', 3],
+  ['tool-frost-sword', '霜寒剑', '优秀', 3],
+  ['tool-scarlet-flame-spear', '赤炎枪', '优秀', 3],
+  ['tool-jade-bow', '碧玉弓', '优秀', 2],
+  ['tool-heavenly-sword', '天玄剑', '优秀', 2],
+  ['tool-haotian-hammer', '天罡锤（弱化版）', '超绝', 2],
+  ['tool-ice-fire-swords', '冰火双剑', '超绝', 2],
+  ['tool-seven-treasure-tower', '七彩琉璃塔（残缺）', '超绝', 1.5],
+  ['tool-angel-wings', '天使之翼（羽翼命器）', '超绝', 1.5],
+  ['tool-demon-sword', '魔神剑', '超绝', 1.5],
+  ['tool-divine-halberd', '神明之钺', '神级', 1],
+  ['tool-void-staff', '虚空棍', '神级', 0.5],
+  ['tool-hourglass', '时之沙漏', '神级', 0.5],
+  ['tool-nine-color-lamp', '九彩宝灯（全属性）', '传说', 0.5],
+  ['tool-chaos-mirror', '混沌镜', '传说', 0.3],
+  ['tool-destiny-disk', '命运天盘', '传说', 0.2],
+  ['tool-creation-spear', '创世神矛', '神王', 0.1],
+  ['tool-douluo-shield', '灵元护盾', '神王', 0.1],
+] as const)
+
+export const animalSpirits = createSpirits('animal', [
+  ['animal-field-mouse', '土鼠', '废', 3],
+  ['animal-snail', '蜗牛', '废', 2],
+  ['animal-sparrow', '麻雀', '废', 2],
+  ['animal-ant', '蚂蚁', '废', 2],
+  ['animal-dog', '土狗', '废', 2],
+  ['animal-boar', '野猪', '普通', 5],
+  ['animal-snake', '普通蛇', '普通', 5],
+  ['animal-mountain-cat', '山猫', '普通', 5],
+  ['animal-eagle', '普通鹰', '普通', 4],
+  ['animal-bat', '蝙蝠', '普通', 4],
+  ['animal-tortoise', '玄龟', '良好', 5],
+  ['animal-fire-fox', '火狐', '良好', 5],
+  ['animal-iron-bear', '铁背熊', '良好', 4],
+  ['animal-silver-wolf', '银月狼', '良好', 4],
+  ['animal-violet-fish', '紫电鱼', '良好', 3],
+  ['animal-wind-eagle', '风鹰', '良好', 3],
+  ['animal-blue-silver-emperor', '银丝皇（弱化）', '优秀', 4],
+  ['animal-scarlet-tiger', '赤金虎', '优秀', 3],
+  ['animal-mystic-tiger', '玄天虎', '优秀', 3],
+  ['animal-nine-tail-fox', '九尾狐', '优秀', 3],
+  ['animal-ice-phoenix', '冰凰（弱化）', '优秀', 2],
+  ['animal-fire-dragon', '火龙（弱化）', '优秀', 2],
+  ['animal-thunder-dragon', '雷龙（弱化）', '超绝', 2],
+  ['animal-two-head-war-beast', '双头战神兽', '超绝', 2],
+  ['animal-holy-tiger', '圣光虎', '超绝', 2],
+  ['animal-nether-cat', '幽冥猫', '超绝', 1.5],
+  ['animal-mirror-dragon', '镜中蛟', '超绝', 1.5],
+  ['animal-forest-lord-shadow', '星渊大森林之主（影）', '神级', 1],
+  ['animal-ice-queen-shadow', '冰雪皇后（影）', '神级', 1],
+  ['animal-chaos-beast', '混沌兽', '神级', 0.5],
+  ['animal-soul-beast-king', '灵兽之王（小斗 variant）', '传说', 0.5],
+  ['animal-ancient-dragon', '上古神龙', '传说', 0.3],
+  ['animal-nine-color-bird', '九彩神雀', '传说', 0.2],
+  ['animal-dream-iceworm', '天梦冰虫（弱化）', '传说', 0.2],
+  ['animal-jade-hand', '万年玉手', '神王', 0.1],
+] as const)
+
+export const natureSpirits = createSpirits('nature', [
+  ['nature-grass', '小草', '废', 5],
+  ['nature-mud', '泥巴', '废', 3],
+  ['nature-flame', '普通火焰', '普通', 8],
+  ['nature-stream', '小水流', '普通', 7],
+  ['nature-breeze', '微风', '普通', 7],
+  ['nature-stone', '石头', '普通', 6],
+  ['nature-blaze', '烈焰', '良好', 8],
+  ['nature-undercurrent', '暗流', '良好', 7],
+  ['nature-lightning', '雷电', '良好', 7],
+  ['nature-mystic-ice', '玄冰', '优秀', 7],
+  ['nature-holy-light', '圣光', '优秀', 6],
+  ['nature-darkness', '幽暗', '优秀', 5],
+  ['nature-dark-gold-flame', '暗金烈焰', '超绝', 4],
+  ['nature-nine-color-radiance', '九彩光辉', '超绝', 3],
+  ['nature-chaos-power', '混沌之力', '神级', 2],
+  ['nature-heaven-earth', '天地玄黄', '神级', 1.5],
+  ['nature-creation-light', '创世之光', '传说', 1],
+  ['nature-void-annihilation', '虚空湮灭', '传说', 0.5],
+  ['nature-yin-yang', '太极阴阳', '神王', 0.3],
+  ['nature-primal-power', '原初神力', '神王', 0.2],
+] as const)
+
+export const spiritsByCategory = {
+  tool: toolSpirits,
+  animal: animalSpirits,
+  nature: natureSpirits,
+} satisfies Record<SpiritCategory, WheelOption<Spirit>[]>
+
+export const allSpirits = [...toolSpirits, ...animalSpirits, ...natureSpirits]

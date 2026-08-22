@@ -1,0 +1,64 @@
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  background: #e9e3d6;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.rewrite-game {
+  --surface-ivory: #fbf7ed;
+  --surface-pearl: #f3ede0;
+  --surface-sky: #e5ebee;
+  --surface-glass: rgba(251, 247, 237, .94);
+  --accent-sky: #527f8f;
+  --accent-pink: #a75e65;
+  --accent-mist: #756785;
+  --accent-champagne: #b28a48;
+  --gold-pale: #e7d5a9;
+  --gold-bright: #b88a3c;
+  --gold-deep: #725323;
+  --jewel-blue: #385f73;
+  --accent-navy: #20394a;
+  --text-ink: #202a2e;
+  --text-muted: #657077;
+  --border-soft: rgba(48, 62, 65, .16);
+  --border-gold: rgba(157, 116, 50, .34);
+  --shadow-soft: 0 14px 40px rgba(36, 43, 43, .1);
+  --shadow-float: 0 28px 80px rgba(28, 34, 35, .18);
+  --shadow-gold: 0 12px 30px rgba(125, 88, 32, .14);
+  --radius-control: 8px;
+  --radius-panel: 10px;
+  --font-display: "Songti SC", "STSong", "Noto Serif SC", "Microsoft YaHei", serif;
+  --font-ui: "Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", "Noto Sans SC", "Segoe UI", sans-serif;
+  color: var(--text-ink);
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.55;
+  letter-spacing: 0;
+}
+
+.rewrite-game,
+.rewrite-game * {
+  box-sizing: border-box;
+}
+
+/* Kill inherited wide tracking on Chinese UI text */
+.rewrite-game h1,
+.rewrite-game h2,
+.rewrite-game h3,
+.rewrite-game p,
+.rewrite-game button,
+.rewrite-game label,
+.rewrite-game span,
+.rewrite-game strong,
+.rewrite-game dt,
+.rewrite-game dd {
+  letter-spacing: 0 !important;
+}

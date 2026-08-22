@@ -1,0 +1,13 @@
+{
+  "miniprogramRoot": "dist/weapp/",
+  "projectname": "game-life",
+  "description": "轮盘人生微信小程序",
+  "appid": "touristappid",
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "minified": true,
+    "postcss": true
+  },
+  "compileType": "miniprogram"
+}

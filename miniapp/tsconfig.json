@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "types": ["@tarojs/taro", "@tarojs/components/types/index"]
+  },
+  "include": ["src", "../src/rewrite/engine", "../src/rewrite/storage", "../src/rewrite/store", "../src/rewrite/content", "../src/content", "../src/data"],
+  "exclude": ["../src/**/*.test.ts", "../src/**/*.test.tsx", "../src/test"]
+}

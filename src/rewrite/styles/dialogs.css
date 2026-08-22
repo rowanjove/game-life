@@ -1,0 +1,194 @@
+.rewrite-game .result-overlay,
+.rewrite-game .wheel-detail-overlay,
+.rewrite-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(48, 66, 105, .36);
+  backdrop-filter: blur(12px) saturate(.88);
+}
+
+.rewrite-game .result-dialog,
+.rewrite-game .wheel-detail-overlay > section,
+.rewrite-dialog {
+  width: min(560px, 92vw);
+  max-height: 78vh;
+  overflow: visible;
+  position: relative;
+  padding: 18px;
+  text-align: center;
+  border: 1px solid rgba(169,122,47,.72);
+  border-radius: var(--radius-panel);
+  color: var(--text-ink);
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.96), rgba(255,248,237,.95)),
+    var(--surface-ivory);
+  box-shadow:
+    inset 0 0 0 5px rgba(255,255,255,.72),
+    inset 0 0 0 7px rgba(206,168,96,.28),
+    var(--shadow-float);
+}
+
+.rewrite-game .result-dialog::before,
+.rewrite-game .result-dialog::after,
+.rewrite-dialog::before,
+.rewrite-dialog::after {
+  content: "◇";
+  position: absolute;
+  color: rgba(179,132,53,.75);
+  font-size: 23px;
+}
+
+.rewrite-game .result-dialog::before,
+.rewrite-dialog::before { left: 14px; top: 9px; }
+.rewrite-game .result-dialog::after,
+.rewrite-dialog::after { right: 14px; bottom: 9px; transform: rotate(180deg); }
+
+.result-dialog__crest,
+.rewrite-dialog__crest {
+  width: 170px;
+  height: 74px;
+  position: absolute;
+  left: 50%;
+  top: -45px;
+  z-index: 2;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 9px 10px rgba(104,76,28,.22));
+}
+
+.result-dialog__inner {
+  max-height: calc(78vh - 36px);
+  overflow: auto;
+  padding: 38px clamp(20px, 6vw, 48px) 28px;
+  border: 1px solid rgba(202,164,89,.38);
+  border-radius: 19px;
+  background:
+    radial-gradient(circle at 50% 0, rgba(159,216,247,.2), transparent 12rem),
+    linear-gradient(rgba(255,255,255,.56), rgba(255,250,241,.28));
+}
+
+.result-dialog__eyebrow {
+  margin: 2px 0 12px;
+  color: var(--text-muted) !important;
+  font: 600 .82rem var(--font-ui);
+  letter-spacing: 0;
+}
+
+.result-dialog h2 { margin-bottom: 14px; }
+
+.result-dialog__illustration {
+  width: min(100%, 390px);
+  height: 118px;
+  margin: 0 auto 14px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(191,151,76,.38);
+  border-radius: 16px;
+  background:
+    linear-gradient(90deg, rgba(255,253,249,.15), transparent 32% 68%, rgba(255,253,249,.15)),
+    url("/rewrite/celestial-background.png") center 13% / 145% auto;
+  box-shadow: inset 0 0 24px rgba(255,255,255,.65);
+}
+
+.result-dialog__illustration::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(255,253,249,.84));
+}
+
+.result-dialog__illustration span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  color: #d2a451;
+  font-size: 1.2rem;
+  text-shadow: 0 0 12px #fff;
+  transform: translate(-50%, -50%);
+}
+
+.result-dialog ul {
+  margin: 20px auto 0;
+  padding: 14px 18px;
+  list-style: none;
+  border-top: 1px solid rgba(190,149,72,.34);
+  border-bottom: 1px solid rgba(190,149,72,.34);
+  color: var(--accent-navy);
+  background: rgba(239,246,255,.45);
+}
+
+.result-dialog .rewrite-primary-action { width: min(100%, 350px); }
+
+.rewrite-game .wheel-detail-overlay > section {
+  overflow: auto;
+  padding: 38px;
+}
+
+.rewrite-dialog {
+  overflow: visible;
+  padding: 54px 38px 34px;
+}
+
+.rewrite-dialog__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.rewrite-dialog__actions .rewrite-primary-action {
+  min-width: 210px;
+  margin-top: 0;
+}
+
+@media (max-width: 700px) {
+  .rewrite-game .result-overlay,
+  .rewrite-dialog-overlay {
+    place-items: center;
+    padding: 12px;
+  }
+
+  .rewrite-game .result-dialog {
+    width: min(92vw, 470px);
+  }
+
+  .result-dialog__inner {
+    padding: 34px 18px 22px;
+  }
+}
+
+.rewrite-game .result-dialog,
+.rewrite-game .wheel-detail-overlay > section,
+.rewrite-dialog {
+  border-color: rgba(176,133,54,.42);
+  background: rgba(255,253,249,.94);
+  box-shadow: 0 28px 80px rgba(47,67,106,.18);
+}
+
+.rewrite-game .result-dialog::before,
+.rewrite-game .result-dialog::after,
+.rewrite-dialog::before,
+.rewrite-dialog::after {
+  display: none;
+}
+
+.result-dialog__crest,
+.rewrite-dialog__crest {
+  color: #b88b43;
+  filter: none;
+}
+
+.result-dialog__inner {
+  border-color: rgba(193,151,73,.24);
+  background: rgba(255,255,255,.32);
+}
+
+.result-dialog__illustration {
+  border-color: rgba(191,151,76,.22);
+  box-shadow: none;
+}

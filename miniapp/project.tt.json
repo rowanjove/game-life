@@ -1,0 +1,11 @@
+{
+  "miniprogramRoot": "dist/tt/",
+  "projectname": "game-life",
+  "description": "轮盘人生抖音小程序",
+  "appid": "testAppId",
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "minified": true
+  }
+}

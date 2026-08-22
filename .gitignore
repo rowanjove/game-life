@@ -1,0 +1,41 @@
+# Dependencies & build
+node_modules/
+dist/
+*.tsbuildinfo
+miniapp/node_modules/
+miniapp/dist/
+miniapp/.swc/
+
+# Local env / secrets
+.env
+.env.*
+!.env.example
+
+# Logs & OS
+*.log
+.dev-test-*.txt
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Tooling caches
+.gstack/
+.worktrees/
+
+# Optional fan / copyright-sensitive packs (do not commit IP content)
+extensions/douluo-life/
+extensions/**/pack.json
+extensions/**/*.zip
+public/extensions/*.zip
+
+# Private content-pack conversion utilities
+scripts/*douluo*
+scripts/neutralize-ip.mjs
+
+# Keep catalog template
+!public/extensions/catalog.json

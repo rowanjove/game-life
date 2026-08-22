@@ -1,0 +1,40 @@
+{
+  "name": "game-life",
+  "private": true,
+  "version": "0.3.0",
+  "description": "Browser life-sim / destiny wheel game with pluggable content packs",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "typecheck": "tsc -b --pretty false",
+    "test": "vitest",
+    "test:ci": "vitest run",
+    "mini:install": "npm --prefix miniapp install",
+    "build:weapp": "npm --prefix miniapp run build:weapp",
+    "build:tt": "npm --prefix miniapp run build:tt"
+  },
+  "dependencies": {
+    "jszip": "^3.10.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "spin-wheel": "^5.0.2",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^4.4.1",
+    "jsdom": "^26.0.0",
+    "typescript": "~5.7.2",
+    "vite": "^6.1.0",
+    "vitest": "^3.0.8"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

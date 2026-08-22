@@ -1,0 +1,16 @@
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { restorePackPreference } from './content/registry'
+import { RewriteApp } from './rewrite/app/RewriteApp'
+
+// Restore content pack before the first React render so store init sees the right pack.
+restorePackPreference()
+
+const root = document.getElementById('root')
+if (!root) throw new Error('游戏启动失败：页面缺少 #root 挂载节点')
+
+createRoot(root).render(
+  <StrictMode>
+    <RewriteApp />
+  </StrictMode>,
+)
