@@ -27,6 +27,16 @@ Desktop.ini
 .gstack/
 .worktrees/
 
+# Private planning and review artifacts
+docs/superpowers/
+docs/代码审查与跨端说明.md
+docs/全面重写验收矩阵.md
+docs/设计文档冲突处理.md
+docs/设计文档覆盖矩阵.md
+
+# Local release bundles (publish them as release assets, not source files)
+/*-web-dist.zip
+
 # Optional fan / copyright-sensitive packs (do not commit IP content)
 extensions/douluo-life/
 extensions/**/pack.json
