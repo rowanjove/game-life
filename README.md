@@ -1,103 +1,71 @@
 # 轮盘人生 · Wheel of Life
 
+[简体中文](README.md) | [English](README.en.md)
+
+轮盘人生是一款中文随机人生游戏，在浏览器中通过命运转盘创建角色、经历事件并走向不同结局。项目使用 React、TypeScript 和 Vite，支持可重放的随机种子、自动存档及可安装内容包。
+
+[在线试玩](https://rowanjove.github.io/wheel-of-life/) · [版本发布](https://github.com/rowanjove/wheel-of-life/releases) · [报告问题](https://github.com/rowanjove/wheel-of-life/issues)
+
 [![CI](https://github.com/rowanjove/wheel-of-life/actions/workflows/ci.yml/badge.svg)](https://github.com/rowanjove/wheel-of-life/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-一个中文为主的随机人生 / 命运转盘游戏。你将在石碑上刻下姓名，逐步揭开容貌、时代、出生地、种族、命器与人生事件，走向属于自己的结局。
+当前公开版本为 **v0.3.2**，面向桌面和移动浏览器。游戏内容与界面以中文为主；英文 README 不代表游戏已完成英文本地化。微信、抖音小程序工作区处于冻结状态，不属于本次 Web 版本的交付范围。
 
-**在线试玩：** [GitHub Pages](https://rowanjove.github.io/wheel-of-life/)
+![轮盘人生桌面端角色创建界面](docs/images/02-identity-desktop.png)
 
-> 当前公开版本为 v0.3.2，聚焦 Web 端。微信小程序与抖音小程序工作区保留在 `miniapp/`，本次发布冻结，不作为 Web 版更名的交付目标。
+## 玩法与功能
 
-## 截图
+- 创建角色：输入姓名、选择性别，使用种子随机数重放创建过程。
+- 命运转盘：生成容貌、时代、出生地、种族、命器、天赋等角色属性。
+- 人生历程：经历学院阶段、事件分支、大赛和成年线，抵达不同结局。
+- 存档恢复：自动保存当前人生；刷新后校验快照并恢复进度。
+- 内容扩展：通过内容包替换创建规则、叙事和词汇。
+- 触屏操作：转盘、按钮和对话框适配移动浏览器。
 
-![角色创建 · Web 桌面端](docs/images/02-identity-desktop.png)
+![命运转盘桌面界面](docs/images/01-web-wheel.png)
 
-![命运转盘 · Web 桌面端](docs/images/01-web-wheel.png)
+## 本地运行
 
-![角色创建 · 移动端](docs/images/03-identity-mobile.png)
-
-![命运结果 · 移动端](docs/images/05-wheel-result.png)
-
-![高密度命运转盘 · 40 段](docs/images/07-wheel-dense-optimized.png)
-
-![高密度命运转盘 · 移动端](docs/images/08-wheel-dense-mobile-optimized.png)
-
-## 已实现
-
-- 角色创建：姓名、性别与可重放的种子随机数。
-- 命运转盘：容貌、时代、出生地、种族、命器、天赋、武魂、魂环与魂骨等阶段。
-- 完整流程：学院阶段、事件分支、大赛、成年线与多种结局。
-- 可恢复存档：自动保存、快照校验、刷新后恢复当前人生。
-- 内容包系统：`creation` / `narrative` / `lexicon` 可覆盖，支持浏览器同源 ZIP 安装。
-- 响应式 UI：桌面与移动浏览器均可玩，按钮、对话框与转盘适配触屏操作。
-- 测试与质量门禁：规则引擎、存档、内容校验、UI 流程均有测试，GitHub Actions 自动执行。
-
-转盘组件参考 [spin-wheel](https://github.com/CrazyTim/spin-wheel) 的开源实现；游戏规则与默认基础内容为本项目原创泛化设定。
-
-## 快速开始
-
-### 环境要求
-
-- Node.js 18+（推荐 Node.js 20）
-- Windows 可直接运行根目录的 `start-game.bat`
-
-### 安装与运行
+需要 Node.js 18 或更高版本；具体依赖见 [package.json](package.json)。
 
 ```bash
-npm install
+git clone https://github.com/rowanjove/wheel-of-life.git
+cd wheel-of-life
+npm ci
 npm run dev
 ```
 
-打开终端提示的本地地址，默认是 `http://127.0.0.1:5173/`。
+打开终端显示的地址，通常为 `http://127.0.0.1:5173/`。Windows 用户也可在安装 Node.js 后运行根目录的 `start-game.bat`。
 
-### 常用命令
-
-| 命令 | 说明 |
+| 命令 | 用途 |
 | --- | --- |
-| `npm run dev` | 启动 Vite 开发服务器 |
-| `npm run test:ci` | 单次运行全部测试 |
-| `npm run typecheck` | TypeScript 类型检查 |
-| `npm run build` | 生产构建 |
+| `npm run test:ci` | 单次运行测试 |
+| `npm run typecheck` | 检查 TypeScript 类型 |
+| `npm run build` | 生成生产构建 |
 | `npm run mini:install` | 安装冻结中的小程序工作区依赖 |
-| `npm run build:weapp` | 构建微信小程序（实验性，非本次发布目标） |
-| `npm run build:tt` | 构建抖音小程序（实验性，非本次发布目标） |
+| `npm run build:weapp` | 实验性微信小程序构建 |
+| `npm run build:tt` | 实验性抖音小程序构建 |
+
+## 存档与内容包
+
+当前存档保存在浏览器 localStorage，键名为 `game-life:current-run-v1`。清除站点数据会影响本地存档，存档也不会自动跨设备同步。快照带有 `packId`，与当前内容包不一致时会拒绝恢复；旧版 `douluo-*` 键支持迁移。
+
+Web 端支持通过本地 ZIP、同源 URL 或 `/extensions/catalog.json` 安装内容包。包可覆盖 `creation`、`narrative` 和 `lexicon`；安装时检查结构、effect 白名单、体积，以及 manifest 提供的 SHA-256。前端 HMAC 用于损坏检测，不构成安全授权。
+
+小程序工作区固定使用内置内容包，不能视为与浏览器扩展安装流程等价。详见 [小程序说明](miniapp/README.md)。
 
 ## 项目结构
 
-```text
-src/
-  content/          # 内容包注册、schema、完整性校验
-  data/             # Web 默认原创基础内容
-  rewrite/
-    engine/         # 纯 TypeScript 规则引擎 / reducer / RNG
-    storage/        # localStorage 存档与快照校验
-    store/          # Zustand 状态层
-    ui/             # React 界面、转盘、弹窗、阶段屏幕
-miniapp/            # 冻结中的 Taro 适配工作区，本版本不继续改动
-docs/               # 设计、审查、发布与截图资料
-```
+- `src/content/`：内容包注册、格式与完整性校验。
+- `src/data/`：默认内容数据。
+- `src/rewrite/engine/`：规则引擎、状态转换与随机数。
+- `src/rewrite/storage/`：存档、快照和恢复校验。
+- `src/rewrite/store/`：Zustand 状态管理。
+- `src/rewrite/ui/`：React 页面、转盘和对话框。
+- `miniapp/`：冻结中的 Taro 适配工作区。
 
-存档 key 为 `game-life:current-run-v1`。存档带有 `packId`，与当前内容包不一致时会拒绝错误恢复；旧版 `douluo-*` key 会自动迁移。
+## 贡献与许可
 
-## 内容扩展与版权边界
+提交前运行测试、类型检查和生产构建。流程见 [贡献指南](CONTRIBUTING.md)，发布验收见 [发布检查清单](docs/RELEASE_CHECKLIST.md)。
 
-Web 端支持通过本地 ZIP、同源 URL 或 `/extensions/catalog.json` 安装内容包。安装时会校验包结构、effect 白名单、体积与 SHA-256（若 manifest 提供）。前端 HMAC 只用于损坏检测，不是安全授权机制。
-
-本仓库只发布原创基础内容与代码。个人 / 同人内容包工作区不会进入公开仓库或 Release Assets；请勿提交未经授权的小说、动漫、游戏文本、角色名或商标。详见 [NOTICE](NOTICE) 与 [SECURITY.md](SECURITY.md)。
-
-## 参与贡献
-
-欢迎提交 Issue 与 Pull Request。提交前请运行：
-
-```bash
-npm run test:ci
-npm run typecheck
-npm run build
-```
-
-贡献规范见 [CONTRIBUTING.md](CONTRIBUTING.md)，发布检查清单见 [docs/RELEASE_CHECKLIST.md](docs/RELEASE_CHECKLIST.md)。
-
-## 许可
-
-MIT，见 [LICENSE](LICENSE)。
+转盘组件参考 [spin-wheel](https://github.com/CrazyTim/spin-wheel)。代码采用 [MIT License](LICENSE)；内容与署名边界见 [NOTICE](NOTICE)。不要提交未经授权的小说、动漫或游戏文本及素材；个人内容包不应混入公开发布资产。安全边界见 [SECURITY.md](SECURITY.md)。
